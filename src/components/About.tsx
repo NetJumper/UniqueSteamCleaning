@@ -55,10 +55,10 @@ export default function About() {
           {/* Daniel Photo */}
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/50">
-              <img src="/daniel-1.jpeg" alt="Daniel Hernandez - Owner of Unique Steam Cleaning" className="w-full h-[500px] object-cover object-top" />
+              <img src="/daniel-1.jpeg" alt="Daniel Hernandez - Owner of Unique Steam Cleaning" className="w-full h-[320px] sm:h-[500px] object-cover object-top" />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
+            <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white rounded-2xl p-3 md:p-4 shadow-xl">
               <p className="text-[#7B2FBE] font-bold text-lg">10+ Years</p>
               <p className="text-gray-500 text-xs">Serving Northern Colorado</p>
             </div>

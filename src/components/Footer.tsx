@@ -1,9 +1,8 @@
 import { business, services } from "@/data/content";
-import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="py-16 px-6 border-t border-white/10">
+    <footer className="py-16 px-6 pb-28 md:pb-16 border-t border-white/10">
       <div className="max-w-6xl mx-auto">
 
         {/* Top Grid */}
@@ -11,7 +10,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <Image src="/unique-logo.png" alt="Unique Steamers" width={160} height={55} style={{ width: "auto", height: "55px" }} className="object-contain mb-4 brightness-0 invert" />
+            <p className="text-white font-bold text-xl mb-1">Unique Steamers</p>
+            <p className="text-purple-400 text-xs uppercase tracking-widest mb-4">Northern Colorado</p>
             <p className="text-purple-200 text-sm leading-relaxed mb-6">
               We specialize in carpet, area rug, hardwood floors, tile & grout, upholstery, and mattress steam cleaning services and more.
             </p>

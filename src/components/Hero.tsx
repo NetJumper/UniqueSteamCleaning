@@ -10,7 +10,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 flex items-center min-h-[88vh]" style={{ paddingTop: "80px" }}>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 flex items-center min-h-[88vh] py-24 md:py-0" style={{ paddingTop: "80px" }}>
         <div className="max-w-lg">
 
           <p className="text-white text-sm font-semibold tracking-widest uppercase mb-3" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.7)" }}>

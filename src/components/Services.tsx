@@ -71,7 +71,7 @@ export default function Services() {
         </div>
 
         {/* Special Services */}
-        <div className="rounded-3xl p-10 mb-14" style={{ background: "linear-gradient(135deg, #1A0533 0%, #3B0F7C 60%, #7B2FBE 100%)" }}>
+        <div className="rounded-3xl p-6 md:p-10 mb-14" style={{ background: "linear-gradient(135deg, #1A0533 0%, #3B0F7C 60%, #7B2FBE 100%)" }}>
           <div className="text-center mb-10">
             <p className="text-purple-300 font-semibold text-sm uppercase tracking-widest mb-2">Also Available</p>
             <h3 className="text-3xl font-extrabold text-white uppercase tracking-wide">Special Services</h3>
