@@ -46,7 +46,7 @@ export default function Navbar() {
           <Link href="#about" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Reviews</Link>
           <Link href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Contact</Link>
-          <a href={business.phoneLink} className="bg-[#F5C518] text-[#1A0533] font-bold px-4 py-2 rounded-full text-center hover:bg-yellow-400 transition">📞 {business.phone}</a>
+          <a href={business.phoneLink} className="bg-black/30 backdrop-blur-sm border border-white/20 text-white font-bold px-4 py-2 rounded-full text-center hover:bg-black/50 transition">📞 {business.phone}</a>
         </div>
       )}
     </nav>

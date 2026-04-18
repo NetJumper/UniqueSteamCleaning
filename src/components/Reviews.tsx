@@ -45,8 +45,18 @@ export default function Reviews() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-purple-100 mb-4">Ready to experience the difference?</p>
-          <a href="tel:9708891115" className="inline-block text-white font-semibold px-8 py-4 rounded-full text-lg transition hover:opacity-90 bg-[#7B2FBE]">Book Your Cleaning Today</a>
+          <p className="text-purple-100 mb-6">Ready to experience the difference?</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:9708891115" className="inline-block text-white font-semibold px-8 py-4 rounded-full text-lg transition hover:opacity-90 bg-[#6D28D9] shadow-lg">Book Your Cleaning Today</a>
+            <a
+              href="https://www.google.com/search?q=Unique+Steam+Cleaning+Windsor+Colorado"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-8 py-4 rounded-full text-lg transition hover:bg-white/20 shadow-lg"
+            >
+              <span className="text-xl">⭐</span> Leave Us a Review
+            </a>
+          </div>
         </div>
 
       </div>
