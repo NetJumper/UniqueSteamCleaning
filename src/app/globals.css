@@ -7,6 +7,10 @@
   --navy-light: #112240;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-image: url('/background.png');
   background-attachment: fixed;

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ScrollToTop from "@/components/ScrollToTop";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import About from "@/components/About";
@@ -12,6 +13,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 export default function Home() {
   return (
     <main className="pb-24 md:pb-0">
+      <ScrollToTop />
       <Navbar />
       <Hero />
       <Stats />

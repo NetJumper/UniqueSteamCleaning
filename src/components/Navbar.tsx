@@ -24,7 +24,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white" style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>
-          <Link href="/" className="hover:text-yellow-300 transition">Home</Link>
+          <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="hover:text-yellow-300 transition">Home</Link>
           <Link href="#services" className="hover:text-yellow-300 transition">Services</Link>
           <Link href="#about" className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" className="hover:text-yellow-300 transition">FAQs</Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden bg-[#3B0F7C]/90 backdrop-blur-sm border-t border-white/10 px-6 py-4 flex flex-col gap-4 text-sm font-medium text-white">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Home</Link>
+          <Link href="/" onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="hover:text-yellow-300 transition">Home</Link>
           <Link href="#services" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Services</Link>
           <Link href="#about" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Reviews</Link>
