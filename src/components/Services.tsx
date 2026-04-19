@@ -54,6 +54,15 @@ export default function Services() {
                   beforePosition="center 30%"
                   afterPosition="center 30%"
                 />
+              ) : service.title === "Upholstery Cleaning" ? (
+                <BeforeAfterSlider
+                  slides={[
+                    { src: "/dirty_chair.jpeg", label: "Before", position: "center center" },
+                    { src: "/clean_couch.jpeg", label: "After", position: "center center" },
+                    { src: "/dirty_couch.jpeg", label: "Before", position: "center center" },
+                    { src: "/clean_chair.jpeg", label: "After", position: "center center" },
+                  ]}
+                />
               ) : (
                 <div className="h-36 flex items-center justify-center text-6xl" style={{ background: cardGradients[i % cardGradients.length] }}>
                   {service.icon}
