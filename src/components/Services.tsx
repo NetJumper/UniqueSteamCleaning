@@ -54,6 +54,13 @@ export default function Services() {
                   beforePosition="center 30%"
                   afterPosition="center 30%"
                 />
+              ) : service.title === "Hardwood Floor Cleaning" ? (
+                <BeforeAfterSlider
+                  beforeSrc="/dirty_hardwood.jpeg"
+                  afterSrc="/clean_hardwood.jpeg"
+                  beforePosition="center 60%"
+                  afterPosition="center 60%"
+                />
               ) : service.title === "Upholstery Cleaning" ? (
                 <BeforeAfterSlider
                   slides={[
