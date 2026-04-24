@@ -15,9 +15,9 @@ export default function About() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-purple-300 font-semibold text-sm uppercase tracking-widest mb-3">Why Choose Us</p>
-          <h2 className="text-4xl font-bold text-white mb-4">The Most Trusted Steam Cleaning Service in Northern Colorado</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">A Small, Family‑Owned Steam Cleaning Company You Can Actually Trust</h2>
           <p className="text-purple-100 max-w-2xl mx-auto leading-relaxed">
-            Family owned, locally operated, and backed by a satisfaction guarantee that no competitor can match.
+            Locally owned and family operated, we believe great service comes from personal accountability, not large crews or rotating technicians. When you choose us, you're choosing real people who take pride in every job.
           </p>
         </div>
 
@@ -27,25 +27,26 @@ export default function About() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-4">Meet Daniel Hernandez</h3>
             <p className="text-purple-100 leading-relaxed mb-4">
-              As a locally owned and family operated business, we take immense pride in providing honest, reliable, and quality steam cleaning services you can trust.
+              This is not a franchise or a big call center operation. We're a small family‑owned business, and Daniel Hernandez is the owner and primary operator. The face you see here is the same person who shows up at your door and completes your service.
             </p>
             <p className="text-purple-100 leading-relaxed mb-4">
-              All employees are vetted through background and reference checks before undergoing our 6-week training program. We believe in doing the job right — every single time.
+              That hands‑on approach is intentional — it ensures consistent quality, attention to detail, and a level of care you simply don't get from larger companies.
             </p>
-            <p className="text-purple-200 font-medium italic mb-8">
-              "We strive for excellence in performing flawless cleaning services."
+            <p className="text-purple-100 leading-relaxed mb-8">
+              When additional help is needed, all team members are carefully vetted, background‑checked, trained, and supervised so your home is always in trusted hands.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {[
-                "Locally Owned & Family Operated",
+                "Family Owned & Operated",
+                "Owner‑Operator Service",
                 "Bonded & Fully Insured",
                 "No Contracts",
                 "Service Guarantee",
-                "Eco-Friendly Products",
+                "Eco‑Friendly Products",
                 "Free Estimates",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-purple-100 text-sm">
-                  <span className="text-purple-300 text-lg">✓</span>
+                  <span className="text-green-400 text-lg font-bold">✔</span>
                   {item}
                 </div>
               ))}
@@ -67,7 +68,7 @@ export default function About() {
 
         {/* Core Values Grid */}
         <div className="text-center mb-10">
-          <h3 className="text-2xl font-bold text-white">Our Core Values</h3>
+          <h3 className="text-2xl font-bold text-white">What Sets Us Apart</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((value) => (
