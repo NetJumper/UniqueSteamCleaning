@@ -63,13 +63,33 @@ export default function Services() {
                 />
               ) : service.title === "Upholstery Cleaning" ? (
                 <BeforeAfterSlider
+                  beforeSrc="/dirty_chair.jpeg"
+                  afterSrc="/clean_chair.jpeg"
+                  beforePosition="center center"
+                  afterPosition="center center"
+                />
+              ) : service.title === "Pet Accidents" ? (
+                <div className="h-64 overflow-hidden">
+                  <video
+                    src="/dirty_petstains.MP4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : service.title === "Area Rug Cleaning" ? (
+                <BeforeAfterSlider
                   slides={[
-                    { src: "/dirty_chair.jpeg", label: "Before", position: "center center" },
-                    { src: "/clean_couch.jpeg", label: "After", position: "center center" },
-                    { src: "/dirty_couch.jpeg", label: "Before", position: "center center" },
-                    { src: "/clean_chair.jpeg", label: "After", position: "center center" },
+                    { src: "/rug_cleaning.1.jpeg", label: "", position: "center center" },
+                    { src: "/rug_cleaning.2.jpeg", label: "", position: "center center" },
                   ]}
                 />
+              ) : service.title === "Mattress Cleaning" ? (
+                <div className="h-64 overflow-hidden">
+                  <img src="/clean_matress.jpeg" alt="Clean Mattress" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
+                </div>
               ) : (
                 <div className="h-36 flex items-center justify-center text-6xl" style={{ background: cardGradients[i % cardGradients.length] }}>
                   {service.icon}
@@ -96,9 +116,23 @@ export default function Services() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {special.map((service, i) => (
               <div key={service.title} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                <div className="h-28 flex items-center justify-center text-5xl" style={{ background: specialGradients[i % specialGradients.length] }}>
-                  {service.icon}
-                </div>
+                {service.title === "Emergency Water Extraction" ? (
+                  <div className="h-44 overflow-hidden">
+                    <img src="/water_extraction.jpeg" alt="Water Extraction" className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }} />
+                  </div>
+                ) : service.title === "Carpet Repair" ? (
+                  <BeforeAfterSlider
+                    beforeSrc="/carpet_unfix.jpeg"
+                    afterSrc="/carpet_fix.jpeg"
+                    beforePosition="center 60%"
+                    afterPosition="center 60%"
+                    height="h-44"
+                  />
+                ) : (
+                  <div className="h-44 flex items-center justify-center text-5xl" style={{ background: specialGradients[i % specialGradients.length] }}>
+                    {service.icon}
+                  </div>
+                )}
                 <div className="p-5 flex flex-col flex-1">
                   <h4 className="text-[#1A0533] font-bold mb-2 text-sm">{service.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed flex-1">{service.description}</p>

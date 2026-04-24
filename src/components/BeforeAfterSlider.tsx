@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 interface Slide {
   src: string;
-  label: "Before" | "After";
+  label: string;
   position?: string;
 }
 
@@ -14,6 +14,7 @@ interface Props {
   afterSrc?: string;
   beforePosition?: string;
   afterPosition?: string;
+  height?: string;
 }
 
 export default function BeforeAfterSlider({
@@ -22,6 +23,7 @@ export default function BeforeAfterSlider({
   afterSrc,
   beforePosition = "center center",
   afterPosition = "center center",
+  height = "h-64",
 }: Props) {
   const resolvedSlides: Slide[] = slides ?? [
     { src: beforeSrc!, label: "Before", position: beforePosition },
@@ -40,7 +42,7 @@ export default function BeforeAfterSlider({
   const slide = resolvedSlides[current];
 
   return (
-    <div className="relative w-full h-64 overflow-hidden">
+    <div className={`relative w-full ${height} overflow-hidden`}>
 
       {resolvedSlides.map((s, i) => (
         <div
@@ -58,12 +60,14 @@ export default function BeforeAfterSlider({
         </div>
       ))}
 
-      {/* Label */}
-      <div className="absolute bottom-3 left-4 z-10">
-        <span className={`${slide.label === "Before" ? "bg-red-500" : "bg-green-500"} text-white text-xs font-bold px-3 py-1 rounded-full`}>
-          {slide.label}
-        </span>
-      </div>
+      {/* Label — hidden when empty */}
+      {slide.label && (
+        <div className="absolute bottom-3 left-4 z-10">
+          <span className={`${slide.label === "Before" ? "bg-red-500" : slide.label === "After" ? "bg-green-500" : "bg-[#6D28D9]"} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+            {slide.label}
+          </span>
+        </div>
+      )}
 
       {/* Dots */}
       <div className="absolute bottom-3 right-4 flex gap-2 z-10">
