@@ -50,33 +50,33 @@ export const services = [
     special: false,
   },
   {
-    title: "Mattress Cleaning",
-    description: "Deep clean your mattress to remove dust mites, allergens, and stains for a healthier sleep.",
-    icon: "🛏️",
-    special: false,
-  },
-  {
     title: "Emergency Water Extraction",
     description: "Fast response water extraction to minimize damage and get your home back to normal quickly.",
     icon: "💧",
-    special: true,
-  },
-  {
-    title: "Janitorial Cleaning",
-    description: "Professional commercial cleaning services tailored to your business needs.",
-    icon: "🏢",
-    special: true,
+    special: false,
   },
   {
     title: "Strip & Wax",
     description: "Professional floor stripping and waxing to restore shine and protect hard floor surfaces.",
     icon: "✨",
-    special: true,
+    special: false,
   },
   {
     title: "Carpet Repair",
     description: "Expert carpet repair for tears, stretching, seams, and damage — restoring your carpet to like-new condition.",
     icon: "🧵",
+    special: false,
+  },
+  {
+    title: "Mattress Cleaning",
+    description: "Deep clean your mattress to remove dust mites, allergens, and stains for a healthier sleep.",
+    icon: "🛏️",
+    special: true,
+  },
+  {
+    title: "Commercial Janitorial Cleaning",
+    description: "Professional commercial cleaning services tailored to your business needs.",
+    icon: "🏢",
     special: true,
   },
 ];

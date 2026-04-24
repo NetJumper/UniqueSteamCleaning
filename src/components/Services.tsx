@@ -1,5 +1,93 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { services } from "@/data/content";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+
+const petVideos = [
+  { src: "/dirty_petstains.MP4", label: "Before" },
+  { src: "/clean_petstains.mp4", label: "After" },
+];
+
+function PetVideoSlider() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === petVideos.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const video = petVideos[current];
+
+  return (
+    <div className="relative h-64 overflow-hidden">
+      <video key={current} src={video.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)" }} />
+      <div className="absolute bottom-3 left-4 z-10">
+        <span className={`${video.label === "Before" ? "bg-red-500" : "bg-green-500"} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+          {video.label}
+        </span>
+      </div>
+      <div className="absolute bottom-3 right-4 flex gap-2 z-10">
+        {petVideos.map((_, i) => (
+          <button key={i} onClick={() => setCurrent(i)} className={`w-2 h-2 rounded-full transition-all ${current === i ? "bg-white scale-125" : "bg-white/50"}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Slide 1: left=Before, right=After | Slide 2: bottom=Before, top=After
+const rugSlides = [
+  {
+    src: "/rug_cleaning.1.jpeg",
+    labels: [
+      { text: "After",  pos: "bottom-3 left-4" },
+      { text: "Before", pos: "bottom-3 right-10" },
+    ],
+  },
+  {
+    src: "/rug_cleaning.2.jpeg",
+    labels: [
+      { text: "Before", pos: "bottom-3 left-4" },
+      { text: "After",  pos: "top-3 left-4" },
+    ],
+  },
+];
+
+function RugSlider() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === rugSlides.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = rugSlides[current];
+
+  return (
+    <div className="relative h-64 overflow-hidden">
+      <img key={current} src={slide.src} alt="Rug cleaning" className="w-full h-full object-cover" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)" }} />
+      {slide.labels.map((l) => (
+        <div key={l.text} className={`absolute ${l.pos} z-10`}>
+          <span className={`${l.text === "Before" ? "bg-red-500" : "bg-green-500"} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+            {l.text}
+          </span>
+        </div>
+      ))}
+      <div className="absolute bottom-3 right-4 flex gap-2 z-10">
+        {rugSlides.map((_, i) => (
+          <button key={i} onClick={() => setCurrent(i)} className={`w-2 h-2 rounded-full transition-all ${current === i ? "bg-white scale-125" : "bg-white/50"}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 // Gradient backgrounds per service for visual variety
 const cardGradients = [
@@ -36,8 +124,8 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Regular Services — 4-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Regular Services — 3-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {regular.map((service, i) => (
             <div key={service.title} className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
               {service.title === "Carpet Cleaning" ? (
@@ -69,27 +157,27 @@ export default function Services() {
                   afterPosition="center center"
                 />
               ) : service.title === "Pet Accidents" ? (
-                <div className="h-64 overflow-hidden">
-                  <video
-                    src="/dirty_petstains.MP4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <PetVideoSlider />
               ) : service.title === "Area Rug Cleaning" ? (
+                <RugSlider />
+              ) : service.title === "Strip & Wax" ? (
                 <BeforeAfterSlider
-                  slides={[
-                    { src: "/rug_cleaning.1.jpeg", label: "", position: "center center" },
-                    { src: "/rug_cleaning.2.jpeg", label: "", position: "center center" },
-                  ]}
+                  beforeSrc="/strip_and_wax_before.jpeg"
+                  afterSrc="/strip_and_wax_after.jpeg"
+                  beforePosition="center center"
+                  afterPosition="center center"
                 />
-              ) : service.title === "Mattress Cleaning" ? (
+              ) : service.title === "Emergency Water Extraction" ? (
                 <div className="h-64 overflow-hidden">
-                  <img src="/clean_matress.jpeg" alt="Clean Mattress" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
+                  <img src="/water_extraction.jpeg" alt="Water Extraction" className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }} />
                 </div>
+              ) : service.title === "Carpet Repair" ? (
+                <BeforeAfterSlider
+                  beforeSrc="/carpet_unfix.jpeg"
+                  afterSrc="/carpet_fix.jpeg"
+                  beforePosition="center 60%"
+                  afterPosition="center 60%"
+                />
               ) : (
                 <div className="h-36 flex items-center justify-center text-6xl" style={{ background: cardGradients[i % cardGradients.length] }}>
                   {service.icon}
@@ -113,21 +201,17 @@ export default function Services() {
             <h3 className="text-3xl font-extrabold text-white uppercase tracking-wide">Special Services</h3>
             <div className="mx-auto mt-3 h-1 w-20 rounded-full bg-[#F5C518]" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {special.map((service, i) => (
               <div key={service.title} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                {service.title === "Emergency Water Extraction" ? (
+                {service.title === "Mattress Cleaning" ? (
                   <div className="h-44 overflow-hidden">
-                    <img src="/water_extraction.jpeg" alt="Water Extraction" className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }} />
+                    <img src="/clean_matress.jpeg" alt="Clean Mattress" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
                   </div>
-                ) : service.title === "Carpet Repair" ? (
-                  <BeforeAfterSlider
-                    beforeSrc="/carpet_unfix.jpeg"
-                    afterSrc="/carpet_fix.jpeg"
-                    beforePosition="center 60%"
-                    afterPosition="center 60%"
-                    height="h-44"
-                  />
+                ) : service.title === "Commercial Janitorial Cleaning" ? (
+                  <div className="h-44 overflow-hidden">
+                    <img src="/Janitoral_pic.JPG" alt="Commercial Janitorial Cleaning" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
+                  </div>
                 ) : (
                   <div className="h-44 flex items-center justify-center text-5xl" style={{ background: specialGradients[i % specialGradients.length] }}>
                     {service.icon}

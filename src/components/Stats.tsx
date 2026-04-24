@@ -1,6 +1,6 @@
 const stats = [
   { value: "500+", label: "Homes Cleaned" },
-  { value: "10+", label: "Years Experience" },
+  { value: "5+", label: "Years Experience" },
   { value: "5.0★", label: "Google Rating" },
   { value: "100%", label: "Satisfaction Guarantee" },
 ];
