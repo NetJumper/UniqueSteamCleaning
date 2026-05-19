@@ -1,4 +1,31 @@
-export default function About() {
+interface AboutData {
+  sectionLabel?: string | null;
+  headline?: string | null;
+  subheadline?: string | null;
+  danielHeadline?: string | null;
+  paragraph1?: string | null;
+  paragraph2?: string | null;
+  paragraph3?: string | null;
+  checklistItems?: string[] | null;
+  badgeYears?: string | null;
+  badgeSubtext?: string | null;
+}
+
+interface Props {
+  about?: AboutData | null;
+}
+
+const defaultChecklist = [
+  "Family Owned & Operated",
+  "Owner‑Operator Service",
+  "Bonded & Fully Insured",
+  "No Contracts",
+  "Service Guarantee",
+  "Eco‑Friendly Products",
+  "Free Estimates",
+];
+
+export default function About({ about }: Props) {
   const values = [
     { icon: "🏠", title: "Locally Owned", desc: "A local family business proud to serve Windsor & Northern Colorado." },
     { icon: "🛡️", title: "Bonded & Fully Insured", desc: "Every job is covered — your home is in safe hands." },
@@ -8,16 +35,22 @@ export default function About() {
     { icon: "🐾", title: "Pet Friendly", desc: "Specialized treatments that eliminate pet stains and odors at the source." },
   ];
 
+  const checklist = about?.checklistItems?.length ? about.checklistItems : defaultChecklist;
+
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-purple-300 font-semibold text-sm uppercase tracking-widest mb-3">Why Choose Us</p>
-          <h2 className="text-4xl font-bold text-white mb-4">A Small, Family‑Owned Steam Cleaning Company You Can Actually Trust</h2>
+          <p className="text-purple-300 font-semibold text-sm uppercase tracking-widest mb-3">
+            {about?.sectionLabel ?? "Why Choose Us"}
+          </p>
+          <h2 className="text-4xl font-bold text-white mb-4">
+            {about?.headline ?? "A Small, Family‑Owned Steam Cleaning Company You Can Actually Trust"}
+          </h2>
           <p className="text-purple-100 max-w-2xl mx-auto leading-relaxed">
-            Locally owned and family operated, we believe great service comes from personal accountability, not large crews or rotating technicians. When you choose us, you're choosing real people who take pride in every job.
+            {about?.subheadline ?? "Locally owned and family operated, we believe great service comes from personal accountability, not large crews or rotating technicians. When you choose us, you're choosing real people who take pride in every job."}
           </p>
         </div>
 
@@ -25,26 +58,20 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
 
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Meet Daniel Hernandez</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              {about?.danielHeadline ?? "Meet Daniel Hernandez"}
+            </h3>
             <p className="text-purple-100 leading-relaxed mb-4">
-              This is not a franchise or a big call center operation. We're a small family‑owned business, and Daniel Hernandez is the owner and primary operator. The face you see here is the same person who shows up at your door and completes your service.
+              {about?.paragraph1 ?? "This is not a franchise or a big call center operation. We're a small family‑owned business, and Daniel Hernandez is the owner and primary operator. The face you see here is the same person who shows up at your door and completes your service."}
             </p>
             <p className="text-purple-100 leading-relaxed mb-4">
-              That hands‑on approach is intentional — it ensures consistent quality, attention to detail, and a level of care you simply don't get from larger companies.
+              {about?.paragraph2 ?? "That hands‑on approach is intentional — it ensures consistent quality, attention to detail, and a level of care you simply don't get from larger companies."}
             </p>
             <p className="text-purple-100 leading-relaxed mb-8">
-              When additional help is needed, all team members are carefully vetted, background‑checked, trained, and supervised so your home is always in trusted hands.
+              {about?.paragraph3 ?? "When additional help is needed, all team members are carefully vetted, background‑checked, trained, and supervised so your home is always in trusted hands."}
             </p>
             <div className="grid grid-cols-2 gap-4">
-              {[
-                "Family Owned & Operated",
-                "Owner‑Operator Service",
-                "Bonded & Fully Insured",
-                "No Contracts",
-                "Service Guarantee",
-                "Eco‑Friendly Products",
-                "Free Estimates",
-              ].map((item) => (
+              {checklist.map((item) => (
                 <div key={item} className="flex items-center gap-2 text-purple-100 text-sm">
                   <span className="text-green-400 text-lg font-bold">✔</span>
                   {item}
@@ -60,8 +87,8 @@ export default function About() {
             </div>
             {/* Floating badge */}
             <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white rounded-2xl p-3 md:p-4 shadow-xl">
-              <p className="text-[#7B2FBE] font-bold text-lg">5+ Years</p>
-              <p className="text-gray-500 text-xs">Serving Northern Colorado</p>
+              <p className="text-[#7B2FBE] font-bold text-lg">{about?.badgeYears ?? "5+ Years"}</p>
+              <p className="text-gray-500 text-xs">{about?.badgeSubtext ?? "Serving Northern Colorado"}</p>
             </div>
           </div>
         </div>

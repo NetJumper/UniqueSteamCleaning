@@ -3,9 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { business } from "@/data/content";
+import { business as defaultBusiness } from "@/data/content";
 
-export default function Navbar() {
+interface Props {
+  business?: typeof defaultBusiness;
+}
+
+export default function Navbar({ business }: Props) {
+  const b = business ?? defaultBusiness;
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -29,8 +34,8 @@ export default function Navbar() {
           <Link href="#about" className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" className="hover:text-yellow-300 transition">FAQs</Link>
           <Link href="#contact" className="hover:text-yellow-300 transition">Contact</Link>
-          <a href={business.phoneLink} className="bg-[#6D28D9] text-white font-bold px-5 py-2 rounded-full hover:bg-[#5B21B6] transition flex items-center gap-2 shadow-md">
-            📞 {business.phone}
+          <a href={b.phoneLink} className="bg-[#6D28D9] text-white font-bold px-5 py-2 rounded-full hover:bg-[#5B21B6] transition flex items-center gap-2 shadow-md">
+            📞 {b.phone}
           </a>
         </div>
 
@@ -46,7 +51,7 @@ export default function Navbar() {
           <Link href="#about" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Reviews</Link>
           <Link href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-yellow-300 transition">Contact</Link>
-          <a href={business.phoneLink} className="bg-black/30 backdrop-blur-sm border border-white/20 text-white font-bold px-4 py-2 rounded-full text-center hover:bg-black/50 transition">📞 {business.phone}</a>
+          <a href={b.phoneLink} className="bg-black/30 backdrop-blur-sm border border-white/20 text-white font-bold px-4 py-2 rounded-full text-center hover:bg-black/50 transition">📞 {b.phone}</a>
         </div>
       )}
     </nav>

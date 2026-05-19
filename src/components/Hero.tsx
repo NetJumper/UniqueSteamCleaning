@@ -1,6 +1,19 @@
-import { business } from "@/data/content";
+import { business as defaultBusiness } from "@/data/content";
 
-export default function Hero() {
+interface HeroData {
+  tagline?: string | null;
+  headline?: string | null;
+  description?: string | null;
+}
+
+interface Props {
+  business?: typeof defaultBusiness;
+  hero?: HeroData | null;
+}
+
+export default function Hero({ business, hero }: Props) {
+  const b = business ?? defaultBusiness;
+
   return (
     <section className="relative min-h-[88vh] overflow-hidden">
 
@@ -14,20 +27,20 @@ export default function Hero() {
         <div className="max-w-lg">
 
           <p className="text-white text-sm font-semibold tracking-widest uppercase mb-3" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.7)" }}>
-            Locally Owned &amp; Family Operated
+            {hero?.tagline ?? "Locally Owned & Family Operated"}
           </p>
 
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.7)" }}>
-            Professional Steam Cleaning<br />Services in Northern Colorado
+            {hero?.headline ?? "Professional Steam Cleaning\nServices in Northern Colorado"}
           </h1>
 
           <p className="text-white/90 mb-8 leading-relaxed font-medium" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.7)" }}>
-            Delivering top-quality steam cleaning solutions with exceptional customer care.
+            {hero?.description ?? "Delivering top-quality steam cleaning solutions with exceptional customer care."}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={business.phoneLink} className="flex items-center justify-center gap-2 bg-[#6D28D9] text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-lg hover:bg-[#5B21B6]">
-              📞 {business.phone}
+            <a href={b.phoneLink} className="flex items-center justify-center gap-2 bg-[#6D28D9] text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-lg hover:bg-[#5B21B6]">
+              📞 {b.phone}
             </a>
             <a href="#contact" className="flex items-center justify-center gap-2 bg-black/25 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-full text-lg transition hover:bg-black/40 shadow-lg">
               Get a Quote →

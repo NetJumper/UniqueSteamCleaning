@@ -1,6 +1,18 @@
-import { reviews } from "@/data/content";
+import { reviews as defaultReviews } from "@/data/content";
 
-export default function Reviews() {
+interface Review {
+  name: string;
+  text: string;
+  rating: number;
+}
+
+interface Props {
+  reviews?: Review[];
+}
+
+export default function Reviews({ reviews }: Props) {
+  const data = reviews ?? defaultReviews;
+
   return (
     <section id="reviews" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -22,7 +34,7 @@ export default function Reviews() {
 
         {/* Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review) => (
+          {data.map((review) => (
             <div key={review.name} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(review.rating)].map((_, i) => (

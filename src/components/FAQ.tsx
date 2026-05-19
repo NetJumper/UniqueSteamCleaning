@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 
-const faqs = [
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs?: FaqItem[];
+}
+
+const defaultFaqs: FaqItem[] = [
   {
     q: "How long does carpet take to dry?",
     a: "Most carpets dry within 2–4 hours depending on airflow and humidity. We recommend opening windows and running fans to speed up the process.",
@@ -33,7 +42,8 @@ const faqs = [
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({ faqs }: Props) {
+  const data = faqs ?? defaultFaqs;
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -48,7 +58,7 @@ export default function FAQ() {
 
         {/* Accordion */}
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
+          {data.map((faq, i) => (
             <div
               key={i}
               className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl overflow-hidden transition-all duration-300"

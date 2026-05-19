@@ -1,8 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { services } from "@/data/content";
+import { services as defaultServices } from "@/data/content";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+
+interface Service {
+  title: string;
+  description: string;
+  icon?: string | null;
+  special: boolean;
+}
+
+interface Props {
+  services?: Service[];
+}
 
 const petVideos = [
   { src: "/dirty_petstains.MP4", label: "Before" },
@@ -107,9 +118,10 @@ const specialGradients = [
   "linear-gradient(135deg, #a78bfa 0%, #f472b6 100%)",
 ];
 
-export default function Services() {
-  const regular = services.filter((s) => !s.special);
-  const special = services.filter((s) => s.special);
+export default function Services({ services }: Props) {
+  const data = services ?? defaultServices;
+  const regular = data.filter((s) => !s.special);
+  const special = data.filter((s) => s.special);
 
   return (
     <section id="services" className="py-20 px-6">

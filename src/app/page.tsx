@@ -9,21 +9,24 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import { fetchAllContent } from "@/sanity/queries";
 
-export default function Home() {
+export default async function Home() {
+  const { business, services, reviews, faqs, hero, about, siteStats } = await fetchAllContent();
+
   return (
     <main className="pb-24 md:pb-0">
       <ScrollToTop />
-      <Navbar />
-      <Hero />
-      <Stats />
-      <Services />
-      <About />
-      <Reviews />
-      <FAQ />
-      <Contact />
-      <Footer />
-      <FloatingCTA />
+      <Navbar business={business} />
+      <Hero hero={hero} business={business} />
+      <Stats siteStats={siteStats} />
+      <Services services={services} />
+      <About about={about} />
+      <Reviews reviews={reviews} />
+      <FAQ faqs={faqs} />
+      <Contact business={business} />
+      <Footer business={business} services={services} />
+      <FloatingCTA business={business} />
     </main>
   );
 }

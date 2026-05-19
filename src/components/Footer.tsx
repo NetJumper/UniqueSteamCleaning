@@ -1,6 +1,14 @@
-import { business, services } from "@/data/content";
+import { business as defaultBusiness, services as defaultServices } from "@/data/content";
 
-export default function Footer() {
+interface Props {
+  business?: typeof defaultBusiness;
+  services?: typeof defaultServices;
+}
+
+export default function Footer({ business, services }: Props) {
+  const b = business ?? defaultBusiness;
+  const s = services ?? defaultServices;
+
   return (
     <footer className="py-16 px-6 pb-28 md:pb-16 border-t border-white/10">
       <div className="max-w-6xl mx-auto">
@@ -15,15 +23,15 @@ export default function Footer() {
             <p className="text-purple-200 text-sm leading-relaxed mb-6">
               We specialize in carpet, area rug, hardwood floors, tile & grout, upholstery, and mattress steam cleaning services and more.
             </p>
-            <p className="text-purple-200 text-sm mb-1">📞 <a href={business.phoneLink} className="hover:text-white transition">{business.phone}</a></p>
-            <p className="text-purple-200 text-sm">🕐 {business.hours}</p>
+            <p className="text-purple-200 text-sm mb-1">📞 <a href={b.phoneLink} className="hover:text-white transition">{b.phone}</a></p>
+            <p className="text-purple-200 text-sm">🕐 {b.hours}</p>
           </div>
 
           {/* Services */}
           <div>
             <h4 className="text-white font-bold mb-6">Our Services</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {s.map((service) => (
                 <li key={service.title}>
                   <a href="#services" className="text-purple-200 text-sm hover:text-white transition flex items-center gap-2">
                     <span className="text-[#7B2FBE]">›</span>
@@ -56,9 +64,9 @@ export default function Footer() {
 
             {/* Social */}
             <div className="flex gap-3 mt-8">
-              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">f</a>
-              <a href={business.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">in</a>
-              <a href={business.yelp} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">y</a>
+              <a href={b.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">f</a>
+              <a href={b.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">in</a>
+              <a href={b.yelp} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xs transition">y</a>
             </div>
           </div>
         </div>

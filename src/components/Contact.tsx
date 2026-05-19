@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { business } from "@/data/content";
+import { business as defaultBusiness } from "@/data/content";
 
-export default function Contact() {
+interface Props {
+  business?: typeof defaultBusiness;
+}
+
+export default function Contact({ business }: Props) {
+  const b = business ?? defaultBusiness;
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,28 +44,28 @@ export default function Contact() {
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl">📞</div>
                 <div>
                   <p className="text-sm text-purple-300">Phone</p>
-                  <a href={business.phoneLink} className="text-white font-semibold hover:text-yellow-300 transition">{business.phone}</a>
+                  <a href={b.phoneLink} className="text-white font-semibold hover:text-yellow-300 transition">{b.phone}</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl">💬</div>
                 <div>
                   <p className="text-sm text-purple-300">Text</p>
-                  <a href={business.smsLink} className="text-white font-semibold hover:text-yellow-300 transition">Text Daniel Now</a>
+                  <a href={b.smsLink} className="text-white font-semibold hover:text-yellow-300 transition">Text Daniel Now</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl">🕐</div>
                 <div>
                   <p className="text-sm text-purple-300">Hours</p>
-                  <p className="text-white font-semibold">{business.hours}</p>
+                  <p className="text-white font-semibold">{b.hours}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl">📍</div>
                 <div>
                   <p className="text-sm text-purple-300">Service Area</p>
-                  <p className="text-white font-semibold">{business.location}</p>
+                  <p className="text-white font-semibold">{b.location}</p>
                 </div>
               </div>
             </div>
@@ -69,9 +74,9 @@ export default function Contact() {
             <div className="mt-10">
               <p className="text-sm text-purple-300 mb-4">Follow Us</p>
               <div className="flex gap-4">
-                <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">f</a>
-                <a href={business.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">in</a>
-                <a href={business.yelp} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">y</a>
+                <a href={b.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">f</a>
+                <a href={b.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">in</a>
+                <a href={b.yelp} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#7B2FBE] flex items-center justify-center text-white text-sm hover:opacity-90 transition">y</a>
               </div>
             </div>
           </div>
