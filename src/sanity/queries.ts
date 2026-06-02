@@ -19,9 +19,23 @@ const defaultStats = [
   { value: '100%', label: 'Satisfaction Guarantee' },
 ]
 
+const defaultContent = {
+  business: defaultBusiness,
+  services: defaultServices,
+  reviews: defaultReviews,
+  faqs: defaultFaqs,
+  hero: null,
+  about: null,
+  siteStats: null,
+  seo: null,
+}
+
 export const fetchAllContent = cache(async () => {
   try {
-    const result = await client.fetch(`{
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Sanity timeout')), 5000)
+    )
+    const result = await Promise.race([client.fetch(`{
       "business": *[_type == "businessInfo"][0],
       "services": *[_type == "service"] | order(order asc, _createdAt asc) {
         title, description, icon, "special": isSpecial
@@ -34,7 +48,7 @@ export const fetchAllContent = cache(async () => {
       "about": *[_type == "aboutContent"][0],
       "siteStats": *[_type == "siteStats"][0],
       "seo": *[_type == "seoSettings"][0],
-    }`)
+    }`), timeout]) as any
 
     return {
       business: result.business ?? defaultBusiness,
@@ -47,15 +61,6 @@ export const fetchAllContent = cache(async () => {
       seo: result.seo ?? null,
     }
   } catch {
-    return {
-      business: defaultBusiness,
-      services: defaultServices,
-      reviews: defaultReviews,
-      faqs: defaultFaqs,
-      hero: null,
-      about: null,
-      siteStats: null,
-      seo: null,
-    }
+    return defaultContent
   }
 })
