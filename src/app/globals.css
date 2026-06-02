@@ -9,10 +9,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #1A0533;
 }
 
 body {
-  background-image: url('/background.jpeg');
+  background-color: #1A0533;
+  background-image: url('/background.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
