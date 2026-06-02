@@ -53,6 +53,7 @@ export default function BeforeAfterSlider({
           <img
             src={s.src}
             alt={s.label}
+            loading="lazy"
             className="w-full h-full object-cover"
             style={{ objectPosition: s.position ?? "center center" }}
           />

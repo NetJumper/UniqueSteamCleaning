@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { services as defaultServices } from "@/data/content";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -22,19 +22,36 @@ const petVideos = [
 
 function PetVideoSlider() {
   const [current, setCurrent] = useState(0);
+  const [inView, setInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setInView(true); observer.disconnect(); }
+    }, { rootMargin: "200px" });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev === petVideos.length - 1 ? 0 : prev + 1));
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [inView]);
 
   const video = petVideos[current];
 
   return (
-    <div className="relative h-64 overflow-hidden">
-      <video key={current} src={video.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+    <div ref={containerRef} className="relative h-64 overflow-hidden">
+      {inView ? (
+        <video key={current} src={video.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full bg-gray-200" />
+      )}
       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)" }} />
       <div className="absolute bottom-3 left-4 z-10">
         <span className={`${video.label === "Before" ? "bg-red-500" : "bg-green-500"} text-white text-xs font-bold px-3 py-1 rounded-full`}>
@@ -82,7 +99,7 @@ function RugSlider() {
 
   return (
     <div className="relative h-64 overflow-hidden">
-      <img key={current} src={slide.src} alt="Rug cleaning" className="w-full h-full object-cover" />
+      <img key={current} src={slide.src} alt="Rug cleaning" loading="lazy" className="w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)" }} />
       {slide.labels.map((l) => (
         <div key={l.text} className={`absolute ${l.pos} z-10`}>
@@ -181,7 +198,7 @@ export default function Services({ services }: Props) {
                 />
               ) : service.title === "Emergency Water Extraction" ? (
                 <div className="h-64 overflow-hidden">
-                  <img src="/water_extraction.jpeg" alt="Water Extraction" className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }} />
+                  <img src="/water_extraction.jpeg" alt="Water Extraction" loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }} />
                 </div>
               ) : service.title === "Carpet Repair" ? (
                 <BeforeAfterSlider
@@ -218,11 +235,11 @@ export default function Services({ services }: Props) {
               <div key={service.title} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
                 {service.title === "Mattress Cleaning" ? (
                   <div className="h-44 overflow-hidden">
-                    <img src="/clean_matress.jpeg" alt="Clean Mattress" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
+                    <img src="/clean_matress.jpeg" alt="Clean Mattress" loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
                   </div>
                 ) : service.title === "Commercial Janitorial Cleaning" ? (
                   <div className="h-44 overflow-hidden">
-                    <img src="/Janitoral_pic.JPG" alt="Commercial Janitorial Cleaning" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
+                    <img src="/Janitoral_pic.JPG" alt="Commercial Janitorial Cleaning" loading="lazy" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
                   </div>
                 ) : (
                   <div className="h-44 flex items-center justify-center text-5xl" style={{ background: specialGradients[i % specialGradients.length] }}>

@@ -19,7 +19,7 @@ export default function Hero({ business, hero }: Props) {
 
       {/* Van photo — no overlay, full brightness */}
       <div className="absolute inset-0 z-0">
-        <img src="/van.jpeg" alt="background" className="w-full h-full object-cover object-center" />
+        <img src="/van.jpeg" alt="background" className="w-full h-full object-cover object-center" fetchPriority="high" />
       </div>
 
       {/* Content */}
