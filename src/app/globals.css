@@ -13,7 +13,7 @@ html {
 
 body {
   background-image: url('/background.jpeg');
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
