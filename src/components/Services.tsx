@@ -16,7 +16,7 @@ interface Props {
 }
 
 const petVideos = [
-  { src: "/dirty_petstains.MP4", label: "Before" },
+  { src: "/dirty_petstains.mp4", label: "Before" },
   { src: "/clean_petstains.mp4", label: "After" },
 ];
 
