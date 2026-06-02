@@ -33,7 +33,7 @@ const defaultContent = {
 export const fetchAllContent = cache(async () => {
   try {
     const timeout = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('Sanity timeout')), 5000)
+      setTimeout(() => reject(new Error('Sanity timeout')), 3000)
     )
     const result = await Promise.race([client.fetch(`{
       "business": *[_type == "businessInfo"][0],

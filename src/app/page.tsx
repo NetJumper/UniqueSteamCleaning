@@ -11,7 +11,8 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import { fetchAllContent } from "@/sanity/queries";
 
-export const revalidate = 60;
+export const dynamic = 'force-static'
+export const revalidate = 3600;
 
 export default async function Home() {
   const { business, services, reviews, faqs, hero, about, siteStats } = await fetchAllContent();
