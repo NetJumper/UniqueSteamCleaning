@@ -1,4 +1,5 @@
 import { business as defaultBusiness } from "@/data/content";
+import SmartPhoneLink from "@/components/SmartPhoneLink";
 
 interface HeroData {
   tagline?: string | null;
@@ -39,9 +40,9 @@ export default function Hero({ business, hero }: Props) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={b.phoneLink} className="flex items-center justify-center gap-2 bg-[#6D28D9] text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-lg hover:bg-[#5B21B6]">
+            <SmartPhoneLink href={b.phoneLink} className="flex items-center justify-center gap-2 bg-[#6D28D9] text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-lg hover:bg-[#5B21B6]">
               📞 {b.phone}
-            </a>
+            </SmartPhoneLink>
             <a href="#contact" className="flex items-center justify-center gap-2 bg-black/25 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-full text-lg transition hover:bg-black/40 shadow-lg">
               Get a Quote →
             </a>

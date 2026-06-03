@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { business as defaultBusiness } from "@/data/content";
+import SmartPhoneLink from "@/components/SmartPhoneLink";
 
 interface Props {
   business?: typeof defaultBusiness;
@@ -34,9 +35,9 @@ export default function Navbar({ business }: Props) {
           <Link href="#about" className="hover:text-yellow-300 transition">About</Link>
           <Link href="#reviews" className="hover:text-yellow-300 transition">FAQs</Link>
           <Link href="#contact" className="hover:text-yellow-300 transition">Contact</Link>
-          <a href={b.phoneLink} className="bg-[#6D28D9] text-white font-bold px-5 py-2 rounded-full hover:bg-[#5B21B6] transition flex items-center gap-2 shadow-md">
+          <SmartPhoneLink href={b.phoneLink} className="bg-[#6D28D9] text-white font-bold px-5 py-2 rounded-full hover:bg-[#5B21B6] transition flex items-center gap-2 shadow-md">
             📞 {b.phone}
-          </a>
+          </SmartPhoneLink>
         </div>
 
         <button className="md:hidden text-white focus:outline-none" onClick={() => setMenuOpen(!menuOpen)}>

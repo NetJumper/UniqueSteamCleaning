@@ -1,3 +1,5 @@
+import SmartPhoneLink from "@/components/SmartPhoneLink";
+
 interface AboutData {
   sectionLabel?: string | null;
   headline?: string | null;
@@ -109,7 +111,7 @@ export default function About({ about }: Props) {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <a href="tel:9708891115" className="inline-block text-[#7B2FBE] bg-white font-semibold px-8 py-4 rounded-full text-lg transition hover:bg-purple-50 shadow-lg">Call Us Now — (970) 889-1115</a>
+          <SmartPhoneLink href="tel:9708891115" className="inline-block text-[#7B2FBE] bg-white font-semibold px-8 py-4 rounded-full text-lg transition hover:bg-purple-50 shadow-lg">Call Us Now — (970) 889-1115</SmartPhoneLink>
         </div>
 
       </div>

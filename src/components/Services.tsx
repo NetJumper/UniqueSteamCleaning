@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { services as defaultServices } from "@/data/content";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import SmartPhoneLink from "@/components/SmartPhoneLink";
 
 interface Service {
   title: string;
@@ -261,7 +262,7 @@ export default function Services({ services }: Props) {
         {/* Bottom CTA */}
         <div className="text-center">
           <p className="text-purple-100 mb-4">Not sure what you need? Just give us a call.</p>
-          <a href="tel:9708891115" className="inline-block text-white font-semibold px-8 py-4 rounded-full text-lg transition hover:opacity-90 bg-[#7B2FBE] shadow-lg">Call (970) 889-1115</a>
+          <SmartPhoneLink href="tel:9708891115" className="inline-block text-white font-semibold px-8 py-4 rounded-full text-lg transition hover:opacity-90 bg-[#7B2FBE] shadow-lg">Call (970) 889-1115</SmartPhoneLink>
         </div>
 
       </div>
