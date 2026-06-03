@@ -8,7 +8,8 @@ interface Props {
 
 export default function SmartPhoneLink({ href, className, children }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (window.innerWidth >= 768) {
+    const isDesktop = window.matchMedia("(pointer: fine)").matches;
+    if (isDesktop) {
       e.preventDefault();
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     }
