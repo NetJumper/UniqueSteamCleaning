@@ -12,7 +12,7 @@ export async function POST(req: Request) {
   try {
     await resend.emails.send({
       from: 'noreply@uniquesteamers.com',
-      to: process.env.OWNER_EMAIL!,
+      to: process.env.OWNER_EMAIL ?? 'daniel.hernandez@uniquesteamers.com',
       replyTo: email || undefined,
       subject: `New estimate request from ${name || 'website visitor'}`,
       html: `
