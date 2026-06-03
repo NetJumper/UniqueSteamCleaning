@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   try {
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'noreply@uniquesteamers.com',
       to: process.env.OWNER_EMAIL!,
       replyTo: email || undefined,
       subject: `New estimate request from ${name || 'website visitor'}`,
